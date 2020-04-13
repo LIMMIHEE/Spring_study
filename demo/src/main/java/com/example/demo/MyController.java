@@ -1,13 +1,15 @@
 package com.example.demo;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+@Controller
 public class MyController {
 	@RequestMapping("/hello")
 	public String hello() {
@@ -37,5 +39,16 @@ public class MyController {
 		
 		return "with_model"; // 역시 템플릿 이름 리턴
 	}
+	
+	@GetMapping("model_and_view")
+	public ModelAndView modelAndView() { // 반환 타입이 ModelAndView
+		ModelAndView m = new ModelAndView("with_model"); // 뷰(템플릿) 이름 지정
+		// addObject(String, Object)
+		m.addObject("title", "Hello World 1234");
+		m.addObject("content", "Content 1234");
+		
+		return m;
+	}
+
 
 }
