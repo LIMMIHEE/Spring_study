@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -48,6 +50,19 @@ public class MyController {
 		m.addObject("content", "Content 1234");
 		
 		return m;
+	}
+	@GetMapping("student") 
+	public String student(Model m) {    
+		m.addAttribute("title", "Student page");// 메소드 시그니쳐 addAttribute(String, Object) 임을 주목, Object 이므로 어떤 클래스도 전 달 가능    
+		m.addAttribute("student", new Student(1, "철수", "chulsoo@naver.com", false));       
+		return "student";       
+		
+	}
+	@RequestMapping("/request_param") 
+	@ResponseBody
+	public String requestParamTest(@RequestParam(value="name") String name) 
+	{ 
+		return name; 
 	}
 
 
