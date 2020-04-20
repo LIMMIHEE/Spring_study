@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -64,6 +66,22 @@ public class MyController {
 	{ 
 		return name; 
 	}
+	@RequestMapping("/request_param2") 
+	public String requestParamTest2(@RequestParam(value="name") String name, 
+			@RequestParam(value="age", required=false) Integer age) {
+			return name + "," + age; 
+	}
+	@RequestMapping("/request_param3") 
+	@ResponseBody
+	// Map<String, String> 
+	public String requestParamTest3(@RequestParam Map<String, String> params) 
+	{
+		String result = "";    
+		for(String key : params.keySet()) {        
+			result += (key + "/" + params.get(key) + " ");    
+		}     
+		return result; 
+		}
 
-
+	
 }
