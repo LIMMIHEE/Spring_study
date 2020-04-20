@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -81,7 +82,18 @@ public class MyController {
 			result += (key + "/" + params.get(key) + " ");    
 		}     
 		return result; 
-		}
-
+	}
+	@RequestMapping("/{width}/{height}") 
+	@ResponseBody
+	// Map<String, String> 
+	public String img_Q(@PathVariable Integer width,
+			@PathVariable Integer height, 
+			@RequestParam(value="blur", required=false) Integer blur) 
+	{
+		 
+		    return width+","+height+","+blur;
+		
+		
+	}
 	
 }
