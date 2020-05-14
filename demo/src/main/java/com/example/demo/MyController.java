@@ -95,5 +95,13 @@ public class MyController {
 		
 		
 	}
+	@GetMapping("student2") 
+	public ModelAndView student2(Student s) { // 파라미터의 Student 타입을 주목   
+			ModelAndView m = new ModelAndView("student");    
+			m.addObject("title", "Student page");    
+			m.addObject("student", s);        
+			return m; 
+	}
+
 	
 }
