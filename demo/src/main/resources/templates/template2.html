@@ -1,0 +1,46 @@
+
+
+<!-- 단순 변수 접근 --> <!-- th:text --> 
+<h1 th:text="${value1}"></h1>
+
+
+<!-- 만약 th:text에서 필요로 하는 값이 제공되지 않으면 기존의  Hello World! 값이 출력됨 --> 
+<p th:text="${value2}">Hello World!</p> 
+<!-- ${} 블록 내부에 자바 표현식 삽입 가능 (비권장) --> 
+<p th:text="${value2.replace('Hello', 'Jello')}">Hello World!</p>
+
+
+<!-- 객체 접근 --> 
+<span th:text="${mybook.name}"></span>
+<br /> 
+
+<!-- 실제로는 mybook.getName() 호출 -> 
+<!-- bracket 써서도 접근 가능 --> 
+<span th:text="${mybook['name']}"></span><br /> 
+
+<!-- + 연산자 이용하여 뒤에 "원" 붙이기 --> 
+<span th:text="${mybook.price} + '원'"></span><br /> 
+
+<!-- mybook.getPrice() --> 
+<span th:text="'할인가: ' + ${mybook.price*0.8} + ' 원'"></span><br /> 
+
+<!-- ||를 내부에 텍스트 삽입 가능 (권장) --> 
+<span th:text="|할인가: ${mybook.price*0.8} 원|"></span><br /> 
+<span th:text="${mybook.author.name}"></span><br /> 
+<!-- mybook.getAuthor().getName() -->
+
+<!-- 객체 접근(*를 사용한 Selection expressions) -->
+ <!-- th:object --> 
+ <!-- mybook이 선택(select)된 상황 --> 
+ <div th:object="${mybook}">   
+ 	<h2>책 정보</h2>    
+<!-- th:object가 포함된 태그 내부의 자식 태그에서는 mybook.name이라고 안 쓰고 * 
+     {name}으로 mybook.name 접근 가능(선택된 객체에 접근한다는 개념) -->    
+
+	<span>저자명 : </span>
+	<span th:text="*{name}"></span><br />    
+	<span>가격 : </span>
+	<span th:text="*{price}"></span><br />    
+	<span>저자명 : </span><span th:text="*{author.name}"></span><br /> 
+</div>
+

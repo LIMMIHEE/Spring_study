@@ -103,5 +103,13 @@ public class MyController {
 			return m; 
 	}
 
-	
+	@RequestMapping("/template2") 
+	public String template2(Model m) {    
+		m.addAttribute("value1", 100);    
+		m.addAttribute("value2", "Hello, Paragraph!");        
+		
+		Book book = new Book("김철수", "부자되는 방법", 10000);    
+		m.addAttribute("mybook", book);        
+		return "template2"; 
+	}
 }
