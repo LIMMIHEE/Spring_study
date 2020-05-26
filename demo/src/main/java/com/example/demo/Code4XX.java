@@ -28,5 +28,10 @@ public class Code4XX {
 		  		return; 
 				  
 	}
+	@RequestMapping("/serve_static") 
+	public String serveStatic() {    
+		return "serve_static"; 
+	}
+
 }
 

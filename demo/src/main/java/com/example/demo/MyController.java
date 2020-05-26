@@ -112,4 +112,9 @@ public class MyController {
 		m.addAttribute("mybook", book);        
 		return "template2"; 
 	}
+	@RequestMapping("/serve_static") 
+	public String serveStatic() {    
+		return "serve_static"; 
+	}
+
 }

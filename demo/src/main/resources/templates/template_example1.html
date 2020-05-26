@@ -1,0 +1,10 @@
+<head th:fragment="header" class="my_header">    
+<title>Default Title</title>    
+<!-- webjars 내부의 라이브러리 이용 -->    
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>   
+ <script>    
+ document.addEventListener("DOMContentLoaded", function(event) {
+	alert('Hello!');        
+});    
+ </script>    <style>    * {        color: blue;        font-size: 36px;    }    body {        background: lightgray;    }    </style> </head>
+<footer th:fragment="footer" class="my_footer">    <p>This is footer.</p> </footer>
